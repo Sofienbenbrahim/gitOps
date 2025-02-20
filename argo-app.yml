@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ToDo-app-argo
+  name: todoapp
   namespace: argocd
 spec:
   project: default
@@ -12,7 +12,7 @@ spec:
     path: myapp
   destination: 
     server: https://kubernetes.default.svc
-    namespace: ToDo-app
+    namespace: todoapp
 
   syncPolicy:
     syncOptions:
