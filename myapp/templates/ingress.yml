@@ -7,29 +7,15 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/enable-websocket: "true"
 spec:
-  ingressClassName: nginx  # ✅ Add this line
+  ingressClassName: nginx
   rules:
   - host: {{ .Values.ingress.host }}
     http:
       paths:
       - pathType: Prefix
-        path: /api/front/
+        path: /
         backend:
           service:
             name: {{ .Values.front.name }}
             port:
               number: 3000
-      - pathType: Prefix
-        path: /api/gateway/
-        backend:
-          service:
-            name: {{ .Values.gateway.name }}
-            port:
-              number: 4000
-      - pathType: Prefix
-        path: /api/backend/
-        backend:
-          service:
-            name: {{ .Values.backend.name }}
-            port:
-              number: 4001
