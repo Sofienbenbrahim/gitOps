@@ -21,5 +21,5 @@ backend:
 
 ingress:
   name: ingress
-  namespace: default
+  namespace: todoapp
   host: www.test-square.com
