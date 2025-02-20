@@ -14,8 +14,10 @@ spec:
       labels:
         app: {{ .Values.front.name }}
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
-        - name: front-service
+        - name: front
           image: {{ .Values.front.image.repository }}:{{ .Values.front.image.tag }}
           ports:
             - containerPort: 3000
@@ -36,8 +38,10 @@ spec:
       labels:
         app: {{ .Values.gateway.name }}
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
-        - name: gateway-service
+        - name: gateway
           image: {{ .Values.gateway.image.repository }}:{{ .Values.gateway.image.tag }}
           ports:
             - containerPort: 4000
@@ -58,6 +62,8 @@ spec:
       labels:
         app: {{ .Values.backend.name }}
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
         - name: backend-service
           image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}

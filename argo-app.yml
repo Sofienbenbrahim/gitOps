@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ToDo-app-argo-application
+  name: ToDo-app-argo
   namespace: argocd
 spec:
   project: default
 
   source:
-    repoURL: https://github.com/Sofienbenbrahim/front-square.git
+    repoURL: https://github.com/Sofienbenbrahim/gitOps.git
     targetRevision: HEAD
-    path: deploy
+    path: myapp
   destination: 
     server: https://kubernetes.default.svc
     namespace: ToDo-app

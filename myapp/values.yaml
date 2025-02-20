@@ -1,22 +1,22 @@
 front:
-  name: front-service
+  name: front-app
   replicaCount: 1
   image:
-    repository: front-app
+    repository: sofieneproservices/square-app
     tag: front-1.0.2
 
 gateway:
-  name: gateway-service
+  name: gateway-app
   replicaCount: 1
   image:
-    repository: gateway-app
+    repository: sofieneproservices/square-app
     tag: gateway-1.0.1
 
 backend:
-  name: backend-service
+  name: backend-app
   replicaCount: 1
   image:
-    repository: back-app
+    repository: sofieneproservices/square-app
     tag: back-app1
 
 ingress:
