@@ -16,6 +16,6 @@ spec:
         path: /
         backend:
           service:
-            name: {{ .Values.front.name }}.todoapp
+            name: {{ .Values.front.name }.todoapp}
             port:
               number: 3000
