@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/Sofienbenbrahim/node-todo.git
+    repoURL: https://github.com/Sofienbenbrahim/front-square.git
     targetRevision: HEAD
     path: deploy
   destination: 
