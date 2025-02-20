@@ -1,0 +1,25 @@
+front:
+  name: front-service
+  replicaCount: 1
+  image:
+    repository: front-app
+    tag: 1.0
+
+gateway:
+  name: gateway-service
+  replicaCount: 1
+  image:
+    repository: gateway-app
+    tag: 1.0
+
+backend:
+  name: backend-service
+  replicaCount: 1
+  image:
+    repository: back-app
+    tag: 1.0
+
+ingress:
+  name: ingress
+  namespace: default
+  host: www.test-square.com
