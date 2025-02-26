@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.front.name }}-green
+  labels:
+    app: {{ .Values.front.name }}
+    version: green
+spec:
+  replicas: {{ .Values.front.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.front.name }}
+      version: green
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.front.name }}
+        version: green
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: front
+          image: {{ .Values.front.image.repository }}:{{ .Values.front.image.tag }}
+          ports:
+            - containerPort: 3000

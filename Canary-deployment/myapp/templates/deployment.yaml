@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.front.name }}
+  labels:
+    app: {{ .Values.front.name }}
+spec:
+  replicas: {{ .Values.front.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.front.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.front.name }}
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: front
+          image: {{ .Values.front.image.repository }}:{{ .Values.front.image.tag }}
+          ports:
+            - containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.front.name }}-canary
+  labels:
+    app: {{ .Values.front.name }}-canary
+spec:
+  replicas: {{ .Values.canary.newVersionReplicas }}  # Initial canary replicas (10%)
+  selector:
+    matchLabels:
+      app: {{ .Values.front.name }}-canary
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.front.name }}-canary
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: front-canary
+          image: {{ .Values.front.image.repository }}:{{ .Values.front.image.tag }}
+          ports:
+            - containerPort: 3000

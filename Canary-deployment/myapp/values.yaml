@@ -1,0 +1,33 @@
+# values.yaml
+
+front:
+  name: front-app
+  replicaCount: 3  # This is for the old version (e.g., 3 replicas for the stable version)
+  image:
+    repository: sofieneproservices/square-app
+    tag: front-1.0.2
+
+gateway:
+  name: gateway-app
+  replicaCount: 1
+  image:
+    repository: sofieneproservices/square-app
+    tag: gateway-1.0.1
+
+backend:
+  name: backend-app
+  replicaCount: 1
+  image:
+    repository: sofieneproservices/square-app
+    tag: back-app1
+
+ingress:
+  name: ingress
+  namespace: todoapp
+  host: www.test-square.com
+
+canary:
+  # New version deployment configuration for gradual rollout
+  newVersionReplicas: 1  # Initial replicas for the new version (10%)
+  increment: 1           # Increase by 1 replica every 5 minutes
+  maxReplicas: 10        # Maximum replicas for the new version

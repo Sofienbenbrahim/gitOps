@@ -1,0 +1,31 @@
+front:
+  name: front-app
+  replicaCount: 1
+  image:
+    repository: sofieneproservices/square-app
+    tag: front-1.0.2
+
+gateway:
+  name: gateway-app
+  replicaCount: 1
+  image:
+    repository: sofieneproservices/square-app
+    tag: gateway-1.0.1
+
+backend:
+  name: backend-app
+  replicaCount: 1
+  image:
+    repository: sofieneproservices/square-app
+    tag: back-app1
+
+ingress:
+  name: ingress
+  namespace: todoapp
+  host: www.test-square.com
+
+blueGreen:
+  activeService: front-app-active
+  previewService: front-app-preview
+  strategy:
+    autoPromotionEnabled: false
